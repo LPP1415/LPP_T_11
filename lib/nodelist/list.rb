@@ -27,8 +27,15 @@
       end
     end
     def first
-      @head.value
+	if @head != nil then
+	 	aux = @head.value
+ 		@head = @head.next
+		return aux
+	else
+		return -1
+	end
     end
+ 
     def to_s
       "#{@head}"
     end
@@ -78,6 +85,7 @@
 	  puts "******EACH****"
     puts listQuestion.each { |o| p o }
     puts listQuestion.is_a? Enumerable
+	puts listQuestion.first
 
 
   end

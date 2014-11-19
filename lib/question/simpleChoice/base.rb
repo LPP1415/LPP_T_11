@@ -2,7 +2,7 @@
 if __FILE__ == $0 then
   $: << "."
 end
-require "question/questionFather/base"
+require "./question/questionFather/base"
   class SimpleChoice < QuestionFather
     attr_accessor :text, :distractor, :right
     def initialize(args)
@@ -12,10 +12,10 @@ require "question/questionFather/base"
     def to_s
 	  options = @distractor+[@right]
 	  options = options.shuffle
-	  puts "#{@text} ?"
-	  options.each do |option|
-	    "#{option}"
-	  end
+	  puts "- Elige la pregunta correcta de la siguiente pregunta #{@text} ?"
+	  options.each {|o|}
+	  	
+	  
     end
   end
 

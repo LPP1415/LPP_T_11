@@ -2,14 +2,14 @@
 if __FILE__ == $0 then
   $: << "."
 end
-require "question/questionFather/base"
+require "./question/questionFather/base"
 
 	class TrueOrFalse < QuestionFather
 		def initialize(args)
 			super
 		end
 		def to_s
-			"#{@text} \n-True \n-False \n"
+			"Responde \"true\" or \"false\" la siguiente pregunta #{@text} \n-True \n-False \n"
 		end
 	end
 
