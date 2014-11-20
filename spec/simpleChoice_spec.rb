@@ -12,6 +12,12 @@ require './lib/question/trueOrFalse'
           expect(@ptf.text) == '2 + 2 ='
           expect(@ptf.right) == 'true'
         end
+	it "To String"do
+	  expect(@ptf.to_s) == 'Responde "true" or "false" la siguiente pregunta 2+2=4 
+-True 
+-False 
+'
+	end
       end
     end
   end
