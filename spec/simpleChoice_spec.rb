@@ -69,6 +69,14 @@ end
           expect(@sc.right) == 4
           expect(@sc.distractor) == [9,3,1]
         end
+	it "to String" do 
+	  expect(@sc.to_s) == '- Elige la pregunta correcta de la siguiente pregunta 2 + 2 = ?
+9
+4
+3
+1
+'
+	end
         it "Pregunta 1" do
           expect(@p1.right) == 'nil'
         end
