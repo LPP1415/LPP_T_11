@@ -2,7 +2,7 @@
 if __FILE__ == $0 then
   $: << "."
 end
-require "./question/questionFather/base"
+require "question/questionFather/base"
   class SimpleChoice < QuestionFather
     attr_accessor :text, :distractor, :right
     def initialize(args)
