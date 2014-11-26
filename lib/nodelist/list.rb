@@ -1,7 +1,7 @@
 # encoding: UTF-8
   include Enumerable
   class Lista
-    attr_accessor :head, :lastnext
+    attr_accessor :head, :lastnext, :puntero
     Node = Struct.new(:value, :next, :father)
     def initialize()
       @head = nil
@@ -14,6 +14,10 @@
          aux = aux.next
      end
     end
+    def reverse_each
+        @head.each {yield @lastnext.value; @lastnext=@lastnext.father} if @lastnext != nil
+    end
+ 
     def add(*args)
       args.each do |value|
         if @head == nil then
@@ -21,6 +25,7 @@
           @lastnext = @head
         else
           last = Node.new(value, nil, @lastnext)
+          last.father = @lastnext
           @lastnext.next = last
           @lastnext = last
         end
@@ -75,7 +80,7 @@
 	  p5 = SimpleChoice.new(:text => "Es apropiado que una clase Tablero herede de una clase Juego.", :right => 'Cierto', :distractor => 'Falso')
 
 	  listQuestion.add(p1,p2,p3,p4,p5)
-
+=begin
 	  puts listQuestion.to_s
 	  puts "**********"
 	  puts listQuestion.first.right
@@ -85,8 +90,12 @@
 	  puts "******EACH****"
     puts listQuestion.each { |o| p o }
     puts listQuestion.is_a? Enumerable
-	puts listQuestion.first
-
-
+=end
+    puts "------------------Normal--------------------"
+    puts listQuestion.each { |o| p o }
+    puts "------------------END NORMAL----------------"
+    puts "------------------REVERSE--------------------"
+    puts listQuestion.reverse_each { |o| p o }
+    puts "------------------END_REVERSE--------------------"
   end
 
