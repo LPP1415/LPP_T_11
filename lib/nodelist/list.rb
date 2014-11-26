@@ -85,8 +85,7 @@
 	  puts "******EACH****"
     puts listQuestion.each { |o| p o }
     puts listQuestion.is_a? Enumerable
-	puts listQuestion.first
-
+    listQuestion.reverse_each {|x| puts x}
 
   end
 
