@@ -14,6 +14,13 @@
          aux = aux.next
      end
     end
+    def reverse_each
+     aux = @lastnext
+     while aux != nil
+         yield aux.value
+         aux = aux.father
+    end
+    end
     def add(*args)
       args.each do |value|
         if @head == nil then
@@ -21,6 +28,7 @@
           @lastnext = @head
         else
           last = Node.new(value, nil, @lastnext)
+          last.father = @lastnext
           @lastnext.next = last
           @lastnext = last
         end
@@ -75,7 +83,7 @@
 	  p5 = SimpleChoice.new(:text => "Es apropiado que una clase Tablero herede de una clase Juego.", :right => 'Cierto', :distractor => 'Falso')
 
 	  listQuestion.add(p1,p2,p3,p4,p5)
-
+=begin
 	  puts listQuestion.to_s
 	  puts "**********"
 	  puts listQuestion.first.right
@@ -85,7 +93,12 @@
 	  puts "******EACH****"
     puts listQuestion.each { |o| p o }
     puts listQuestion.is_a? Enumerable
-    listQuestion.reverse_each {|x| puts x}
-
+=end
+    puts "------------------Normal--------------------"
+    puts listQuestion.each { |o| p o }
+    puts "------------------END NORMAL----------------"
+    puts "------------------REVERSE--------------------"
+    puts listQuestion.reverse_each { |o| p o }
+    puts "------------------END_REVERSE--------------------"
   end
 
