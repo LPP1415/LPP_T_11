@@ -1,7 +1,7 @@
 # encoding: UTF-8
   include Enumerable
   class Lista
-    attr_accessor :head, :lastnext
+    attr_accessor :head, :lastnext, :puntero
     Node = Struct.new(:value, :next, :father)
     def initialize()
       @head = nil
@@ -15,12 +15,9 @@
      end
     end
     def reverse_each
-     aux = @lastnext
-     while aux != nil
-         yield aux.value
-         aux = aux.father
+        @head.each {yield @lastnext.value; @lastnext=@lastnext.father} if @lastnext != nil
     end
-    end
+ 
     def add(*args)
       args.each do |value|
         if @head == nil then
