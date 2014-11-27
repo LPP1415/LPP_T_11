@@ -30,7 +30,7 @@ class Examen
         return @node_i.value.to_s
     end
     def reverse_question
-	@list.reverse
+      @list.reverse
     end
     def response_question(value)
         print "Respuesta: "
@@ -64,6 +64,7 @@ if $0 == __FILE__ then
 
     list = Lista.new()
     list.add(p1,p2,p3)
+    list.reverse
     examen = Examen.new(list)
 
     examen.next_question

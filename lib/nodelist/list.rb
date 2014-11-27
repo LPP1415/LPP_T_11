@@ -19,14 +19,23 @@
     end
 
     def reverse
-	array_aux = Array.new
-	@head.reverse{|x| array_aux.push(x)}
-	@head = nil
-	@lastnext = nil
-	array_aux.each {|x| self.add([x.value]) }
-        return nil
+      list = Array.new
+      @head.reverse{|x| list.push(x.value)}
+      @head = nil
+      @lastnext = nil
+      list.each{|x| self.add(x)}
     end
-
+    def add_s(value) 
+        if @head == nil then
+          @head = Node.new(value, nil, nil)
+          @lastnext = @head
+        else
+          last = Node.new(value, nil, @lastnext)
+          last.father = @lastnext
+          @lastnext.next = last
+          @lastnext = last
+        end
+    end
     def add(*args)
       args.each do |value|
         if @head == nil then
@@ -41,15 +50,14 @@
       end
     end
     def first
-	if @head != nil then
-	 	aux = @head.value
- 		@head = @head.next
-		return aux
-	else
-		return -1
-	end
+      if @head != nil then
+        aux = @head.value
+        @head = @head.next
+        return aux
+      else
+        return -1
+      end
     end
- 
     def to_s
       "#{@head}"
     end
@@ -101,12 +109,11 @@
     puts listQuestion.is_a? Enumerable
 =end
     puts "------------------Normal--------------------"
-    puts listQuestion.each { |o| p o }
+    listQuestion.each { |o| p o }
     puts "------------------END NORMAL----------------"
     puts "------------------REVERSE--------------------"
-#    puts listQuestion.reverse_each { |o| p o }
     listQuestion.reverse
-    listQuestion.each{|o| print o}
+    listQuestion.each{|x| p x}
     puts "------------------END_REVERSE--------------------"
   end
 

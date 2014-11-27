@@ -28,14 +28,13 @@ class Interfaz
         q9 = TrueOrFalse.new(:text => '2 - 2 = 1',:right => 'false', :dif =>9)
         q10 = TrueOrFalse.new(:text => '2 - 1 = 1',:right => 'true', :dif =>10)
         @list.add(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10)
-
+        @list.reverse
     end
     def run
         if @list.head == nil then
             generate_q
         end
         examen = Examen.new(@list)
-    	examen.reverse_question
         while examen.next_question != nil do
             STDOUT.flush
             value = gets.chomp

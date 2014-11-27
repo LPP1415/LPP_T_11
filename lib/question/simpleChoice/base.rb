@@ -7,12 +7,10 @@ require "question/questionFather/base"
     end
 
     def to_s
-	  options = @distractor + [@right]
-	  options = options.shuffle
-	  puts "- Elige la pregunta correcta de la siguiente pregunta #{@text} ?"
-	  options.each {|o|}
-	  	
-	  
+      options = @distractor + [@right]
+      options = options.shuffle
+      puts "- Elige la pregunta correcta de la siguiente pregunta #{@text} ?"
+      options.each {|o|}
     end
   end
 
