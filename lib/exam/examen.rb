@@ -29,6 +29,9 @@ class Examen
         puts "-----v"
         return @node_i.value.to_s
     end
+    def reverse_question
+	@list.reverse
+    end
     def response_question(value)
         print "Respuesta: "
         if value == @node_i.value.right then

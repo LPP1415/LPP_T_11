@@ -1,8 +1,8 @@
 # encoding: UTF-8
+  require './node/node.rb'
   include Enumerable
   class Lista
     attr_accessor :head, :lastnext, :puntero
-    Node = Struct.new(:value, :next, :father)
     def initialize()
       @head = nil
       @lastnext = nil
@@ -17,7 +17,16 @@
     def reverse_each
         @head.each {yield @lastnext.value; @lastnext=@lastnext.father} if @lastnext != nil
     end
- 
+
+    def reverse
+	array_aux = Array.new
+	@head.reverse{|x| array_aux.push(x)}
+	@head = nil
+	@lastnext = nil
+	array_aux.each {|x| self.add([x.value]) }
+        return nil
+    end
+
     def add(*args)
       args.each do |value|
         if @head == nil then
@@ -95,7 +104,9 @@
     puts listQuestion.each { |o| p o }
     puts "------------------END NORMAL----------------"
     puts "------------------REVERSE--------------------"
-    puts listQuestion.reverse_each { |o| p o }
+#    puts listQuestion.reverse_each { |o| p o }
+    listQuestion.reverse
+    listQuestion.each{|o| print o}
     puts "------------------END_REVERSE--------------------"
   end
 

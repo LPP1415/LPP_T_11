@@ -35,6 +35,7 @@ class Interfaz
             generate_q
         end
         examen = Examen.new(@list)
+    	examen.reverse_question
         while examen.next_question != nil do
             STDOUT.flush
             value = gets.chomp
