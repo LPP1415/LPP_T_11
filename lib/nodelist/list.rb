@@ -1,7 +1,7 @@
 # encoding: UTF-8
-  require './node/node.rb'
-  include Enumerable
+require "./lib/node/node.rb"
   class Lista
+    include Enumerable
     attr_accessor :head, :lastnext, :puntero
     def initialize()
       @head = nil

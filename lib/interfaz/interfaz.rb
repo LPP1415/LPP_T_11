@@ -1,11 +1,11 @@
 if __FILE__ == $0 then
     $: << "."
 end
-require './nodelist/list'
-require './exam/examen'
-require './question/simpleChoice/base'
-require './question/trueOrFalse/base'
-require './question/questionFather/base'
+require './lib/nodelist/list'
+require './lib/exam/examen'
+require './lib/question/simpleChoice/base'
+require './lib/question/trueOrFalse/base'
+require './lib/question/questionFather/base'
 
 class Interfaz
     attr_accessor :list

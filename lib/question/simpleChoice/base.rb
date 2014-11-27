@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require "question/questionFather/base"
+require "./lib/question/questionFather/base"
   class SimpleChoice < QuestionFather
     attr_accessor :text, :distractor, :right
     def initialize(args)

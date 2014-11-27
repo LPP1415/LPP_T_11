@@ -1,5 +1,5 @@
 # encoding UTF-8
-require "question/questionFather/base"
+require "./lib/question/questionFather/base"
 	class TrueOrFalse < QuestionFather
 		def initialize(args)
 			super

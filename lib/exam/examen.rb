@@ -2,10 +2,10 @@ if __FILE__ == $0 then
     $: << "."
 end
 
-require './nodelist/list'
-require './question/simpleChoice/base'
-require './question/trueOrFalse/base'
-require './question/questionFather/base'
+require './lib/nodelist/list'
+require './lib/question/simpleChoice/base'
+require './lib/question/trueOrFalse/base'
+require './lib/question/questionFather/base'
 
 class Examen
     attr_accessor :list , :node_i , :acierto , :fallo
@@ -25,8 +25,8 @@ class Examen
         else
             @node_i = @list.head
         end
+        
         puts @node_i.value.to_s
-        puts "-----v"
         return @node_i.value.to_s
     end
     def reverse_question
