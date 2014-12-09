@@ -14,14 +14,6 @@ describe Examen do
     
     end
     describe "constructor" do
-      it "constructor correcto" do
-
-        expect(@examen.reverse_question) == nil
-        expect(@examen.next_question) == '3)2 * 2 = '
-        expect(@examen.next_question) == '2)5 + 2 = ' 
-        expect(@examen.next_question) == '1)2 + 2 = '
-
-      end
       it "lista asignada correctamente" do
         expect(@examen.list) == @list
       end

@@ -8,7 +8,7 @@ require './lib/question/trueOrFalse/base'
 require './lib/question/questionFather/base'
 
 class Quiz
-	attr_accessor :list
+	attr_accessor :list, :title
 	def initialize (title, &block)
 		
 		@list = Lista.new()
@@ -53,6 +53,6 @@ if __FILE__ == $0 then
 	question "En Ruby los bloque son objetos que continen codigo",
 	wrong =>'Cierto',
 	right =>'Falso'
-	}	
-	quiz.to_exam
+	}
+	puts quiz.list	
 end
