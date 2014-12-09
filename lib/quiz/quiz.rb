@@ -7,43 +7,52 @@ require './lib/question/simpleChoice/base'
 require './lib/question/trueOrFalse/base'
 require './lib/question/questionFather/base'
 
-class Interfaz
-    attr_accessor :list
-    def initialize(list)
-        if list != nil then
-            @list = list
-        else
-            @list = Lista.new()
-        end
-    end
-    def generate_q
-        q1 = SimpleChoice.new(:text => '2 + 2 = ',:right => '4',:distractor => [5,3,2], :dif =>1)
-        q2 = SimpleChoice.new(:text => '2 * 2 = ',:right => '4',:distractor => [5,3,2], :dif =>2)
-        q3 = SimpleChoice.new(:text => '3 + 2 = ',:right => '5',:distractor => [6,3,2], :dif =>3)
-        q4 = SimpleChoice.new(:text => '2 - 1 = ',:right => '1',:distractor => [0,3,2], :dif =>4)
-        q5 = SimpleChoice.new(:text => '2 - 2 = ',:right => '0',:distractor => [4,3,2], :dif =>5)
-        q6 = TrueOrFalse.new(:text => '2 + 2 = 4',:right => 'true', :dif =>6)
-        q7 = TrueOrFalse.new(:text => '2 * 2 = 4',:right => 'true', :dif =>7)
-        q8 = TrueOrFalse.new(:text => '3 + 2 = 6',:right => 'false', :dif =>8)
-        q9 = TrueOrFalse.new(:text => '2 - 2 = 1',:right => 'false', :dif =>9)
-        q10 = TrueOrFalse.new(:text => '2 - 1 = 1',:right => 'true', :dif =>10)
-        @list.add(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10)
-        @list.reverse
-    end
-    def run
-        if @list.head == nil then
-            generate_q
-        end
-        examen = Examen.new(@list)
-        while examen.next_question != nil do
-            STDOUT.flush
-            value = gets.chomp
-            examen.response_question(value)
-        end
-        examen.show_stats
-    end
+class Quiz
+	attr_accessor :list
+	def initialize (title, &block)
+		
+		@list = Lista.new()
+		@i = 0		
+		@title = title		
+		@distractor = []
+		instance_eval &block
+	end
+
+	def question(text,answers={})		
+		@text = text
+		@right = answers[:right] if answers[:right]
+		answers.map do |key,value|
+			@distractor << value if key != :right
+		end
+		@list.add(SimpleChoice.new(:text => @text,:right => @right,:distractor => @distractor,:dif => '1'))
+		@distractor = []
+
+	end
+
+	def right
+		:right
+	end
+
+	def wrong
+		@i = @i + 1	
+		("distractor"+@i.to_s).intern	
+	end
+	def to_exam
+		Examen.new(@list)
+	end
+	
 end
+
 if __FILE__ == $0 then
-    interfaz = Interfaz.new(nil)
-    interfaz.run
+	quiz = Quiz.new("Cuestionario de LPP 05/12/2014") {
+	question '¿Cuantos argumentos de tipo bloque puede recibir un m´etodo?',
+	right =>'1',
+	wrong =>'2',
+	wrong =>'muchos',
+	wrong =>'los que defina el usuario'
+	question "En Ruby los bloque son objetos que continen codigo",
+	wrong =>'Cierto',
+	right =>'Falso'
+	}	
+	quiz.to_exam
 end
