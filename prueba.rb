@@ -1,16 +1,19 @@
 class Quiz
 	attr_accessor :title, :text, :right, :distractor
 	def initialize (title, &block)		
-		@title = title
+		@i = 0		
+		@title = title		
 		@distractor = []
 		instance_eval &block
 	end
 
-	def question(text,answers ={})
+	def question(text,answers={})		
 		@text = text
-		@right = answers[:right] if answers[:right] 
-		@distractor << answers[:distractor] if answers[:distractor]
-		
+		@right = answers[:right] if answers[:right]
+		answers.map do |key,value|
+			@distractor << value if key != :right
+		end
+
 	end
 
 	def right
@@ -18,7 +21,8 @@ class Quiz
 	end
 
 	def wrong
-		:distractor
+		@i = @i + 1	
+		("distractor"+@i.to_s).intern	
 	end
 	def to_s
 		puts @title
@@ -37,10 +41,8 @@ if $0 == __FILE__ then
 	wrong =>'muchos',
 	wrong =>'los que defina el usuario'
 
-	question "En Ruby los bloque son objetos que continen codigo",
-	wrong =>'Cierto',
-	right =>'Falso'
+	
 	}
-	puts quiz
+	#puts quiz
 
 end
