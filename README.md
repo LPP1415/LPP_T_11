@@ -1,8 +1,7 @@
 # Práctica 9 de Lenguajes y paradigmas de la programación
 
 [![Build Status](https://travis-ci.org/alu0100789683/LPP_T_11.svg)](https://travis-ci.org/alu0100789683/LPP_T_11)
-[![Coverage Status](https://coveralls.io/repos/alu0100789683/LPP_T_11/badge.png)](https://coveralls.io/r/alu0100789683/LPP_T_11)
-
+[![Coverage Status](https://coveralls.io/repos/alu0100789683/LPP_T_11/badge.png?branch=master)](https://coveralls.io/r/alu0100789683/LPP_T_11?branch=master)
 TODO: Write a gem description
 
 ## Installation
