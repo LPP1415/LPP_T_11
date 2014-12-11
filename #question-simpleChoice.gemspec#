@@ -6,11 +6,11 @@ require 'question/simpleChoice/version'
 Gem::Specification.new do |spec|
   spec.name          = "question-simpleChoice"
   spec.version       = Question::SimpleChoice::VERSION
-  spec.authors       = ["Eduardo"]
+  spec.authors       = ["Eduardo JesÅ˙s D.D."]
   spec.email         = ["edudioniz@gmail.com"]
   spec.description   = %q{creador de examenes}
   spec.summary       = %q{creador de examenes}
-  spec.homepage      = "http://www.creaexamen.com"
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
